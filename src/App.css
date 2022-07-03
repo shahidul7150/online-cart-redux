@@ -2,6 +2,7 @@
 *{
   margin: 0;padding: 0;
   box-sizing: border-box;
+  font-family: 'Nunito', sans-serif
 }
 
 .nav-bar{
@@ -37,4 +38,16 @@ color: #14121a;
 margin-left: 5px;
 
 
+}
+.notFound{
+ 
+ text-align: center;
+ padding: 200px 0;
+ color: #3f3f41;
+}
+.notFound h2{
+  font-size: 56px;
+}
+.notFound h1{
+  font-size: 80px;
 }
