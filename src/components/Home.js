@@ -6,11 +6,33 @@ const Home = () => {
     console.log("Api ",isLoading);
     console.log("Data ",data);
     return (
-        <div>
-            <h2>Home</h2>
-            <p>{data.length}</p>
-            <p>{data[0].name}</p>
-            <img src={data[0].image} alt="" />
+        <div className='home-container'>
+            {isLoading ? (
+                <p>Loading.....</p>
+            ) : error ? (
+                    <p>An error occured...</p>
+                ) : (
+                        <>
+                            <h2>New Arrivals</h2>
+                            <div className='products'>
+                               
+                                {
+                                    data.map(product => (
+                                        <div key={product.id} className="product">
+                                            <h3>{product.name}</h3>
+                                            <img src={product.image} alt={product.name} />
+                                            <div className='details'>
+                                                <span>{product.desc}</span>
+                                                <span className='price'>${product.price}</span>
+                                            </div>
+                                            <button>Add To Cart</button>
+                                        </div>
+                                    ))
+                             }
+
+                            </div>
+                        </>
+          )}
         </div>
     );
 };
