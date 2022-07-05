@@ -94,5 +94,10 @@ margin-left: 5px;
   padding: 10px ;
   color: #fff;
   letter-spacing: 1.5px;
+  transition: all 0.5s;
 
+}
+.product button:hover{
+  background: rgb(190, 166, 84);
+  transition: all 0.5s;
 }
