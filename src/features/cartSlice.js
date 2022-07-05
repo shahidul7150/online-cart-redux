@@ -3,7 +3,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-    cartItems: [],
+    cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")):[],
     cartTotalQuantity: 0,
     cartTotalAmount:0,
 }
@@ -15,13 +15,30 @@ const cartSlice = createSlice({
             const itemIndex = state.cartItems.findIndex((item) => item.id === action.payload.id);
             if (itemIndex >= 0) {
                 state.cartItems[itemIndex].cartTotalQuantity += 1;
-                toast.info("Increased product quantity")
+                toast.info(`${action.payload.name} increased  quantity`,{
+                    position: "bottom-left",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    })
             } else {
                 
                 const tempProduct = { ...action.payload, cartTotalQuantity: 1 };
                 state.cartItems.push(tempProduct);
-                toast.success("added a new product to cart")
+                toast.success(`${action.payload.name} adde to cart`,{
+                    position: "bottom-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    })
             }
+            localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
         },
 
     }
