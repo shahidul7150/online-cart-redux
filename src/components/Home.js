@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../features/cartSlice';
 import { useGetAllProductsQuery } from '../features/productsApi';
-import { ToastContainer } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,14 +13,21 @@ const Home = () => {
   const dispatch = useDispatch();
 const navigate=useNavigate()
 
-  const handleAddToCart = (product) => {
+  const handleAddToCart =(product) => {
       dispatch(addToCart(product));
-    
-    navigate('/cart')
-  
       
-  };
-  console.log(handleAddToCart);
+
+      
+    // setTimeout(() => {
+    //     navigate("/cart")
+    // }, 3000);
+     
+    //  second way 
+    navigate("/cart")
+    };
+   
+    
+//   console.log(handleAddToCart);
   return (
     <div className="home-container">
       {isLoading ? (
@@ -44,10 +51,13 @@ const navigate=useNavigate()
                 </button>
               </div>
             ))}
-            <ToastContainer />
-          </div>
+            
+                          </div>
+                          
         </>
-      )}
+          )}
+             
+
     </div>
   );
 };
